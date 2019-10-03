@@ -1,0 +1,35 @@
+#! /bin/sh
+### BEGIN INIT INFO
+# Provides:             qtbrew
+# Required-Start:       $remote_fs $time
+# Required-Stop:        $remote_fs $time
+# Default-Start:        2 3 4 5
+# Default-Stop:         0 1 6
+# Short-Description:    Brewery Controller
+### END INIT INFO
+
+set -e
+
+case "$1" in
+  start)
+	echo -n "Starting qtbrew: "
+	start-stop-daemon -S -b -n qtbrew -a /usr/bin/qtbrew -- -platform eglfs
+	echo "done"
+	;;
+  stop)
+	echo -n "Stopping qtbrew: "
+	start-stop-daemon -K -n qtbrew
+	echo "done"
+	;;
+  restart)
+  	$0 stop
+	$0 start
+	;;
+  *)
+	echo "Usage: qtbrew { start | stop | restart }" >&2
+	exit 1
+	;;
+esac
+
+exit 0
+
