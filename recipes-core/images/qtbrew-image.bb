@@ -1,5 +1,6 @@
 inherit core-image
 inherit extrausers
+inherit populate_sdk_qt5
 
 IMAGE_FEATURES = "ssh-server-openssh"
 
@@ -20,4 +21,7 @@ IMAGE_INSTALL += " \
 	ttf-droid-sans-mono \
         libgpiod \
         libgpiod-tools \
+        ssh-keys \
+        openssh-sftp-server \
+        rsync \
 "
