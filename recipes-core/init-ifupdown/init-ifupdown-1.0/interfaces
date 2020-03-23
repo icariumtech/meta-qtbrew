@@ -10,3 +10,12 @@ iface eth0 inet static
         address 10.0.0.1
         netmask 255.255.255.0
 
+# Wireless interfaces
+auto wlan0
+iface wlan0 inet dhcp
+	wireless_mode managed
+	wireless_essid any
+	wpa-driver wext
+	wpa-conf /etc/wpa_supplicant.conf
+
+

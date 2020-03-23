@@ -1,0 +1,52 @@
+From 647b1ced71b103a974afb9ec88f45e8024257bb3 Mon Sep 17 00:00:00 2001
+From: Gabe Johnson <johnsoga@gmail.com>
+Date: Sun, 26 Jan 2020 22:34:15 +0000
+Subject: [PATCH] set max spi speed to 5khz
+
+---
+ arch/arm/boot/dts/bcm2710-rpi-3-b-plus.dts | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/arch/arm/boot/dts/bcm2710-rpi-3-b-plus.dts b/arch/arm/boot/dts/bcm2710-rpi-3-b-plus.dts
+index 69703c351f72..2433f09e1a71 100644
+--- a/arch/arm/boot/dts/bcm2710-rpi-3-b-plus.dts
++++ b/arch/arm/boot/dts/bcm2710-rpi-3-b-plus.dts
+@@ -114,7 +114,7 @@
+ 		reg = <0>;	/* CE0 */
+ 		#address-cells = <1>;
+ 		#size-cells = <0>;
+-		spi-max-frequency = <125000000>;
++		spi-max-frequency = <500000>;
+ 	};
+ 
+ 	spidev1: spidev@1{
+@@ -122,7 +122,7 @@
+ 		reg = <1>;	/* CE1 */
+ 		#address-cells = <1>;
+ 		#size-cells = <0>;
+-		spi-max-frequency = <125000000>;
++		spi-max-frequency = <500000>;
+ 	};
+ 
+         spidev2: spidev@2{
+@@ -130,7 +130,7 @@
+                 reg = <2>;      /* CE2 */
+                 #address-cells = <1>;
+                 #size-cells = <0>;
+-                spi-max-frequency = <125000000>;
++                spi-max-frequency = <500000>;
+         };
+ 
+         spidev3: spidev@3{
+@@ -138,7 +138,7 @@
+                 reg = <3>;      /* CE3 */
+                 #address-cells = <1>;
+                 #size-cells = <0>;
+-                spi-max-frequency = <125000000>;
++                spi-max-frequency = <500000>;
+         };
+ 
+ };
+-- 
+2.17.1
+
