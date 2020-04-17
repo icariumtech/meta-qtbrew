@@ -1,0 +1,69 @@
+From 165dcdc30df18fd2c2194360d8d5dd34e3d1067c Mon Sep 17 00:00:00 2001
+From: Gabe Johnson <johnsoga@gmail.com>
+Date: Fri, 17 Apr 2020 00:52:49 +0000
+Subject: [PATCH] create 4 spi0 cs rpi4b
+
+---
+ arch/arm/boot/dts/bcm2711-rpi-4-b.dts | 26 +++++++++++++++++++++-----
+ 1 file changed, 21 insertions(+), 5 deletions(-)
+
+diff --git a/arch/arm/boot/dts/bcm2711-rpi-4-b.dts b/arch/arm/boot/dts/bcm2711-rpi-4-b.dts
+index ccdc274665c0..2b3aa1da709a 100644
+--- a/arch/arm/boot/dts/bcm2711-rpi-4-b.dts
++++ b/arch/arm/boot/dts/bcm2711-rpi-4-b.dts
+@@ -82,14 +82,14 @@
+ &spi0 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&spi0_pins &spi0_cs_pins>;
+-	cs-gpios = <&gpio 8 1>, <&gpio 7 1>;
++	cs-gpios = <&gpio 8 1>, <&gpio 7 1>, <&gpio 24 1>, <&gpio 25 1>;
+ 
+ 	spidev0: spidev@0{
+ 		compatible = "spidev";
+ 		reg = <0>;	/* CE0 */
+ 		#address-cells = <1>;
+ 		#size-cells = <0>;
+-		spi-max-frequency = <125000000>;
++		spi-max-frequency = <500000>;
+ 	};
+ 
+ 	spidev1: spidev@1{
+@@ -97,8 +97,24 @@
+ 		reg = <1>;	/* CE1 */
+ 		#address-cells = <1>;
+ 		#size-cells = <0>;
+-		spi-max-frequency = <125000000>;
+-	};
++		spi-max-frequency = <500000>;
++	};
++
++        spidev2: spidev@2{
++                compatible = "spidev";
++                reg = <2>;      /* CE2 */
++                #address-cells = <1>;
++                #size-cells = <0>;
++                spi-max-frequency = <500000>;
++        };
++
++        spidev3: spidev@3{
++                compatible = "spidev";
++                reg = <3>;      /* CE3 */
++                #address-cells = <1>;
++                #size-cells = <0>;
++                spi-max-frequency = <500000>;
++        };
+ };
+ 
+ // =============================================
+@@ -164,7 +180,7 @@
+ 	};
+ 
+ 	spi0_cs_pins: spi0_cs_pins {
+-		brcm,pins = <8 7>;
++		brcm,pins = <8 7 24 25>;
+ 		brcm,function = <BCM2835_FSEL_GPIO_OUT>;
+ 	};
+ 
+-- 
+2.17.1
+
