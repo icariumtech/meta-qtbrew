@@ -13,7 +13,7 @@ set -e
 case "$1" in
   start)
 	echo -n "Starting qtbrew: "
-	start-stop-daemon -S -b -n qtbrew -a /usr/bin/qtbrew -- -platform eglfs
+	start-stop-daemon -S -b -n qtbrew -a /usr/bin/env QT_QPA_EGLFS_PHYSICAL_HEIGHT=135 QT_QPA_EGLFS_PHYSICAL_WIDTH=215 /usr/bin/qtbrew -- -platform eglfs
 	echo "done"
 	;;
   stop)
